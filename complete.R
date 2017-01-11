@@ -3,7 +3,7 @@ complete <- function(directory, id = 1:332){
   tryCatch(
     
     {
-      dirPath <- paste(getwd(), "/", directory, sep="")
+      dirPath <- paste("./", directory, sep="")
       isValidDirectory(dirPath)
       summ <- data.frame(id=numeric(), nobs=numeric())
       
@@ -11,9 +11,8 @@ complete <- function(directory, id = 1:332){
         
         filePath <- paste(dirPath, "/", formatC(id[i], width = 3, flag = 0), ".csv", sep="")
         df <- read.csv(file = filePath, header = TRUE, sep=",", dec=".")
-        df_logical <- complete.cases(df)
         
-        newRow <- c(id[i], sum(df_logical))
+        newRow <- c(id[i], nrow(df[complete.cases(df),]))
         
         summ[nrow(summ)+1, ] <- newRow
       }

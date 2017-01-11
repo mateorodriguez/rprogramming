@@ -14,14 +14,14 @@ corr <- function(directory, threshold = 0){
       for(i in 1:length(files)){
         
         csv <- read.csv(file = files[i], header = TRUE, sep=",", dec=".")
-        if(nrow(csv[complete.cases(csv),]) > threshold){
+        if(complete(directory, i)["nobs"] > threshold){
           
-          csv_sulf <- rbind(csv_sulf, csv[,c(2)])
-          csv_nit <- rbind(csv_nit, csv[,c(3)])
+          csv_sulf <- rbind(csv_sulf, csv[complete.cases(csv),][c(2)])
+          csv_nit <- rbind(csv_nit, csv[complete.cases(csv),][c(3)])
         }
         
       }
-      cor(csv_sulf, csv_nit)
+      cor(csv_sulf[[c(1)]], csv_nit[[c(1)]])
     },
     error = function(e)
     {
