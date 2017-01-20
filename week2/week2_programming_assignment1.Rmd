@@ -1,0 +1,126 @@
+---
+title: 'Week2 | Programming Assignment 1: Quiz'
+author: "Juan Mateo Rodríguez Sánchez"
+date: "12 de enero de 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Initialize scripts**
+
+```{r}
+source('~/R/rprogramming/pollutantMean.R')
+source('~/R/rprogramming/corr.R')
+```
+
+
+**Question 1** What value is returned by the following call to pollutantmean()? You should round your output to 3 digits.
+
+```{r}
+pollutantmean("specdata", "sulfate", 1:10)
+```
+
+**Question 2** What value is returned by the following call to pollutantmean()? You should round your output to 3 digits.
+
+```{r}
+pollutantmean("specdata", "nitrate", 70:72)
+```
+
+**Question 3** What value is returned by the following call to pollutantmean()? You should round your output to 3 digits.
+
+```{r}
+pollutantmean("specdata", "sulfate", 34)
+```
+
+**Question 4** What value is returned by the following call to pollutantmean()? You should round your output to 3 digits.
+
+```{r}
+pollutantmean("specdata", "nitrate")
+```
+
+**Question 5** What value is printed at end of the following code?
+
+```{r}
+cc <- complete("specdata", c(6, 10, 20, 34, 100, 200, 310))
+print(cc$nobs)
+```
+
+**Question 6** What value is printed at end of the following code?
+
+```{r}
+cc <- complete("specdata", 54)
+print(cc$nobs)
+```
+
+**Question 7** What value is printed at end of the following code?
+
+```{r}
+set.seed(42)
+cc <- complete("specdata", 332:1)
+use <- sample(332, 10)
+print(cc[use, "nobs"])
+```
+
+**Question 8** What value is printed at end of the following code?
+
+```{r}
+cr <- corr("specdata")                
+cr <- sort(cr)                
+set.seed(868)                
+out <- round(cr[sample(length(cr), 5)], 4)
+print(out)
+```
+
+
+**Question 9** What value is printed at end of the following code?
+
+```{r}
+cr <- corr("specdata", 129)                
+cr <- sort(cr)                
+n <- length(cr)                
+set.seed(197)                
+out <- c(n, round(cr[sample(n, 5)], 4))
+print(out)
+```
+
+**Question 10** What value is printed at end of the following code?
+
+```{r}
+cr <- corr("specdata", 2000)                
+n <- length(cr)                
+cr <- corr("specdata", 1000)                
+cr <- sort(cr)
+print(c(n, round(cr, 4)))
+```
+
+
+
+
+
+
+
+
+
+
+### R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
