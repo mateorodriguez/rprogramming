@@ -1,4 +1,4 @@
-source('~/Data Science Specialization/R Programming/week4/best.R')
+source('./best.R')
 rankhospital <- function(state, outcome, num="best"){
   
   ## Read data
