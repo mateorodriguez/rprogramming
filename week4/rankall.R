@@ -8,7 +8,7 @@ rankall <- function(outcome, num = "best"){
   valid.num(outcome_df, num)
   
   ## Create data.frame
-  ranking <- data.frame(Hospital.Name=character(), State=character(), stringsAsFactors = FALSE)
+  ranking <- data.frame(hospital=character(), state=character(), stringsAsFactors = FALSE)
   
   ## Run rankhospital.R function for every State
   for(st in sort(as.character(unique(outcome_df$State)))){

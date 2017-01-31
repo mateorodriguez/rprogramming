@@ -32,6 +32,6 @@ valid.num <- function(data, num){
   
   if(num!= "best" && num!= "worst" && !is.numeric(num))
     stop("Invalid num")
-  if(num > nrow(outcome_df))
+  if(num > nrow(data))
     return(NA)
 }

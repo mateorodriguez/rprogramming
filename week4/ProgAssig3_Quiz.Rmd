@@ -1,0 +1,90 @@
+---
+title: "Programming Assignment 3: Quiz"
+author: "Juan Mateo Rodríguez Sánchez"
+date: "30 de enero de 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Quiz Solution
+
+Load the required script: rankall.R
+```{r source}
+source("./rankall.R")
+```
+
+
+**1. What result is returned by the following code?**
+
+```{r question1}
+best("SC", "heart attack")
+```
+
+
+**2. What result is returned by the following code?**
+
+```{r question2}
+best("NY", "pneumonia")
+```
+
+
+**3. What result is returned by the following code?**
+
+```{r question3}
+best("AK", "pneumonia")
+```
+
+
+**4. What result is returned by the following code?**
+
+```{r question4}
+rankhospital("NC", "heart attack", "worst")
+```
+
+
+**5. What result is returned by the following code?**
+
+```{r question5}
+rankhospital("WA", "heart attack", 7)
+```
+
+
+**6. What result is returned by the following code?**
+
+```{r question6}
+rankhospital("TX", "pneumonia", 10)
+```
+
+
+**7. What result is returned by the following code?**
+
+```{r question7}
+rankhospital("NY", "heart attack", 7)
+```
+
+
+**8. What result is returned by the following code?**
+
+```{r question8}
+r <- rankall("heart attack", 4)
+as.character(subset(r, state == "HI")$hospital)
+```
+
+
+**9. What result is returned by the following code?**
+
+```{r question9}
+r <- rankall("pneumonia", "worst")
+as.character(subset(r, state == "NJ")$hospital)
+```
+
+
+**10. What result is returned by the following code?**
+
+```{r question10}
+r <- rankall("heart failure", 10)
+as.character(subset(r, state == "NV")$hospital)
+```
