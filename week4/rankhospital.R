@@ -7,7 +7,10 @@ rankhospital <- function(state, outcome, num="best"){
   ## Validate num param
   valid.num(outcome_df, num)
   
-  ## Subsets the data by the given state and outcome
+  ## Subsets the data by the given state and outcome and returns a data frame with
+  ## - "State"
+  ## - "Hospital.Name"
+  ## - Outcome.Mortality
   outcome_df <- subset.by.outcome(outcome_df, state, outcome)
   
   ## Orders the data by the outcome rate

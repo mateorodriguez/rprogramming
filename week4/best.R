@@ -23,7 +23,7 @@ best <- function(state, outcome){
   
 }
 
-subset.by.outcome <- function(data, state, outcome){
+subset.by.outcome <- function(data, state, outcome, ...){
   
   ## Get data from the specified state
   data <- subset(data, State==state)

@@ -1,5 +1,5 @@
 source('./rankhospital.R')
-rankall - function(outcome, num = "best"){
+rankall <- function(outcome, num = "best"){
   
   ## Read data
   outcome_df <- read.csv("outcome-of-care-measures.csv", na.strings = "Not Available")
@@ -7,13 +7,17 @@ rankall - function(outcome, num = "best"){
   ## Validate num
   valid.num(outcome_df, num)
   
-  mydf <- data.frame()
-  ## Run rankhospital.R function
-  for(st in as.character(unique(outcome_df$State))){
-    a <- rankhospital(st, outcome, num)
+  ## Create data.frame
+  ranking <- data.frame(Hospital.Name=character(), State=character(), stringsAsFactors = FALSE)
+  
+  ## Run rankhospital.R function for every State
+  for(st in sort(as.character(unique(outcome_df$State)))){
     
+    newrow <- c(rankhospital(st, outcome, num), st)
+    ranking[nrow(ranking)+1, ] <- newrow
     
   }
   
+  ranking
   
 }
